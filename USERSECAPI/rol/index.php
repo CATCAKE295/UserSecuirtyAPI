@@ -1,14 +1,18 @@
 <?php 
 
-require_once "model/Rol.php";
+
+require_once "./model/Read.php";
+require_once "./model/Create.php";
+require_once "./model/Update.php";
+require_once "./model/Delete.php";
 
 switch ($_SERVER['REQUEST_METHOD']) {
     
     case 'GET':
         if (isset($_GET['id_rol'])) {
-            echo json_encode(Rol::getWhere($_GET['id_rol']));
+            echo json_encode(Read::getWhere($_GET['id_rol']));
         } else {
-            echo json_encode(Rol::getAll());
+            echo json_encode(Read::getAll());
         }
         break;
 
@@ -17,7 +21,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
         $data = json_decode(file_get_contents('php://input'));
 
         if ($data != NULL) {
-            if (Rol::insert($data->rol)) {
+            if (Create::insert($data->rol)) {
                 http_response_code(200);            
             } else {
                 http_response_code(400); 
@@ -34,7 +38,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
         $data = json_decode(file_get_contents('php://input'));
 
         if ($data != NULL) {
-            if (Rol::update($data->id_rol,$data->rol)) {
+            if (Update::update($data->id_rol,$data->rol)) {
                 http_response_code(200);
             
             } else {
@@ -49,7 +53,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
     case 'DELETE':
         if(isset($_GET['id_rol'])){
-            if (Rol::delete($_GET['id_rol'])) {
+            if (Delete::delete($_GET['id_rol'])) {
                 http_response_code(200);
             } else {
                 http_response_code(400);
