@@ -6,7 +6,7 @@ class Update {
 
     public static function update($id_option,$option){
         $db = new Connection();
-        $query = "UPDATE option SET option = '".$option."' WHERE id_option = $id_option;";
+        $query = "UPDATE db_user_security.option SET `option` = '".$option."' WHERE id_option = $id_option;";
         $db->query($query);
 
         if ($db -> affected_rows) {

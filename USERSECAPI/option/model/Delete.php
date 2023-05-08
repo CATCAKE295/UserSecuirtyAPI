@@ -6,10 +6,10 @@ class Delete {
 
     public static function delete($id_option){
         $db = new Connection();
-        $query = "DELETE FROM option WHERE id_option = $id_option;";
+        $query = "DELETE FROM db_user_security.option WHERE id_option = $id_option;";
         $db->query($query);
         if ($db->affected_rows) {
-            echo json_encode(['Mesage' => 'El rol ha sido borrado correctamente']);
+            echo json_encode(['Mesage' => 'La opcion ha sido borrada correctamente']);
         } else {
             echo json_encode(['Error' => mysqli_error($db)]);
         }

@@ -5,7 +5,7 @@ require_once "../connection/Connection.php";
 class Create {
     public static function insert($option){
         $db = new Connection();
-        $query = "INSERT INTO option (option) VALUES( '".$option."' );";
+        $query = "INSERT INTO db_user_security.option (`option`) VALUES( '".$option."' );";
         $db->query($query);
         if ($db -> affected_rows) {
             echo json_encode(['Mesage' => 'The option has been added']);
