@@ -7,8 +7,8 @@ class Create {
         $db = new Connection();
         
         $password_hash = password_hash($password, PASSWORD_DEFAULT);
-        $query = "INSERT INTO db_user_security.user (username, name, lastname, password, email)
-        VALUES ('".$username."','".$name."','".$lastname."','".$password_hash."','".$email."')";
+        $query = "INSERT INTO codesociety_uca_user.user (username, name, lastname, password, email, state)
+        VALUES ('".$username."','".$name."','".$lastname."','".$password_hash."','".$email."',1)";
         
         $db->query($query);
 
