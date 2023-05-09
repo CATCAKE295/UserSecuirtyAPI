@@ -7,11 +7,13 @@ class Delete {
     public static function delete($id_user){
         $db = new Connection();
 
-        $queryUser = "DELETE FROM user WHERE id_user = $id_user;";
-        $queryToken = "DELETE FROM db_user_security.token WHERE id_user = $id_user;";
 
-        if(mysqli_multi_query($db, $queryToken . $queryUser)) {
-            echo json_encode(['mensaje' => 'Las dos consultas se ejecutaron correctamente.']);
+        $query = "UPDATE codesociety_uca_user.user SET `state` = 3 WHERE id_user = $id_user;";
+        $db->query($query);
+
+    
+        if($db->affected_rows) {
+            echo json_encode(['mensaje' => 'El usuairo se borro correctamente']);
         } else {
             echo json_encode(['Error' => mysqli_error($db)]);
         }
