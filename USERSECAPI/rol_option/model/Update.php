@@ -1,10 +1,10 @@
 <?php
-require_once '../connection/Connection.php';
+require_once "../connection/Connection.php";
 
 class Update{
-    public static function remove($id_rol, $id_option, $id_rol_option){
+    public static function update($id_rol_option, $id_rol, $id_option){
         $db = new Connection();
-        $query = "UPDATE codesociety_uca_user.rol_option SET id_rol = $id_rol, id_option = $id_option WHERE id_rol_option = $id_rol_option;";
+        $query = "UPDATE codesociety_uca_user.rol_option SET id_rol='".$id_rol."', id_option= '".$id_option."' WHERE id_rol_option= '".$id_rol_option."';";
         $db -> query($query);
 
         if($db -> affected_rows){

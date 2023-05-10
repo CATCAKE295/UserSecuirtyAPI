@@ -13,6 +13,55 @@ switch($_SERVER['REQUEST_METHOD']){
         }
         break; 
     
+    case 'POST':
+        $data = json_decode(file_get_contents('php://input'));
+
+        if ($data != NULL) {
+
+            if (Create::insert($data->id_rol,$data->id_option)) {        
+                http_response_code(200);
+            } else {
+                http_response_code(405);
+            }
+        } else {
+
+            http_response_code(405);
+
+        }
+
+        break;
+
+    case 'PUT':
+
+        $data = json_decode(file_get_contents('php://input'));
+    
+         if ($data != NULL) {
+
+            if (Update::update($data->id_rol_option,$data->id_rol,$data->id_option)) {        
+                http_response_code(200);
+            } else {
+                http_response_code(405);
+            }
+
+                
+        } else {
+            http_response_code(405);
+        }
+        break;
+    
+    case 'DELETE':
+        if (isset($_GET['id_rol_option'])) {
+            if (Delete::remove($_GET['id_rol_option'])) {
+                http_response_code(200);
+            } else {
+                http_response_code(400);
+            }
+        } else {
+            http_response_code(405);
+
+        }
+        break;
+    
 }
 
 ?>

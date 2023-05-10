@@ -12,11 +12,17 @@ class Read{
         
         if($result -> num_rows){
             while($row = $result -> fetch_assoc()){
-                $data[] = ['id_rol_option' => $row['id_rol_option'], 'id_rol' => $row['id_rol'], 'id_option' => $row['id_option']];
+
+                $data[] = [
+                    'id_rol_option' => $row['id_rol_option'], 
+                    'id_rol' => $row['id_rol'], 
+                    'id_option' => $row['id_option']
+                ];
             }
             return $data;
         }
         return $data;
+        
         mysqli_close($db);
     }
     
