@@ -1,5 +1,5 @@
 <?php
-require_once '../connection/Connection.php'
+require_once '../connection/Connection.php';
 
 class Read{
 
@@ -8,7 +8,7 @@ class Read{
         $query = "SELECT * FROM codesociety_uca_user.rol_option";
         $result = $db -> query($query);
 
-        $data = []
+        $data = [];
         
         if($result -> num_rows){
             while($row = $result -> fetch_assoc()){
@@ -25,7 +25,7 @@ class Read{
         $query = "SELECT * FROM codesociety_uca_user.rol_option WHERE id_rol_option = $id_rol_option";
         $result = $db -> query($query);
 
-        $data = []
+        $data = [];
         
         if($result -> num_rows){
             while($row = $result -> fetch_assoc()){
