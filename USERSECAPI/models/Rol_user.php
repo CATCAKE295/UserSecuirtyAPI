@@ -1,10 +1,11 @@
-<?php
+<?php 
 
-require_once "../connection/Connection.php";
 
-class Rol_user{
+require_once "./connection/Connection.php";
 
-    public static function getAll(){
+class Rol_user {
+
+    public  function getAll(){
         $db = new Connection();
         $query = "SELECT * FROM rol_user";
         $result = $db->query($query);
@@ -24,8 +25,7 @@ class Rol_user{
         return $data;
     }
 
-
-    public static function getWhere($rol_user_id){
+    public function getWhere($rol_user_id){
 
         $db = new Connection();
         $query = "SELECT * FROM rol_user WHERE id_rol_user = $rol_user_id";
@@ -49,11 +49,10 @@ class Rol_user{
 
     }
 
-
-    public static function insert($rol_id, $user_id){
+    public function insert($rol_id, $user_id){
         $db = new Connection();
         $query = "INSERT INTO rol_user (id_rol, id_user)
-        VALUE ('".$rol_id."' , '".$user_id."') ";
+        VALUE ('".$rol_id."' , '".$user_id."')";
         $db->query($query);
         if($db->affected_rows){
             return TRUE;
@@ -61,8 +60,7 @@ class Rol_user{
         return FALSE;
     }
 
-
-    public static function update($rol_user_id, $rol_id, $user_id){
+    public function update($rol_user_id, $rol_id, $user_id){
         $db = new Connection();
         $query = "UPDATE rol_user SET 
                     id_rol='".$rol_id."',
@@ -75,8 +73,7 @@ class Rol_user{
         return FALSE;
     }
 
-
-    public static function delete($rol_user_id){
+    public function delete($rol_user_id){
         $db = new Connection();
         $query = "DELETE FROM rol_user WHERE id_rol_user= $rol_user_id";
         $db->query($query);
@@ -85,6 +82,10 @@ class Rol_user{
         }
         return FALSE;
     }
+
+
+
 }
+
 
 ?>
